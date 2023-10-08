@@ -41,5 +41,8 @@ def ejercicioVampiro2(capacidadBotes,capacidadGarrafas):
 
 botesVacios = int(input("¿Cúantos botes vacíos tengo?: "))
 numeroGarrafas = int(input("¿Cúantas garrafas he comprado?: "))
-print (ejercicioVampiro2(mePasé))
+# print (ejercicioVampiro2(mePasé)) ?
+# print (mePasé()) ?
+# print (ejercicioVampiro2(capacidadBotes="",capacidadGarrafas="")) ?
+
 
