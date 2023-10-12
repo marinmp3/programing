@@ -31,13 +31,22 @@ def calculoDivisa():
 #Código 1
 print (calculoDivisa())
 
-# Funciones 2
-def marcador():
-    knut = 493
-    sickle = 29
-    galeon = 17
-    return f"{galeon}:{sickle}:{knut}"
+# # Funciones 2
+# def marcador():
+#     knut = 493
+#     sickle = 29
+#     galeon = 17
+#     return f"{galeon}:{sickle}:{knut}"
+# # Funciones 2
+#     while knut==29:
+#         sickle = 1
+#     while sickle+17:
+#         galeon = 1
+#     for knut in range(1,493+1):
+#         print (f"{galeon}:{sickle}:{knut}")
 
+# Código 2
+print(marcador())
 # Código 2
 print(marcador())
 
