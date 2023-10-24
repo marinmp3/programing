@@ -14,3 +14,10 @@ ejm: def ejercicio13(color1): (color1 es el nombre que equivale a primerColor en
         return (f"¿Cómo sabías que el {color2} es mi color favorito?")
     
 print(ejercicio13(primerColor)) (llamo al color definido en el ej 0)
+
+f"..." -> dar formato
+
++= : resultado = resultado + otra cosa (basicamente añadimos o restamos a esa variable "resultado" otra variable)(son útiles en funciones con return "resultado")
+-= : ... - otra cosa
+
+min(lista) -> indica el valor mínimo de una lista.
