@@ -21,3 +21,4 @@ f"..." -> dar formato
 -= : ... - otra cosa
 
 min(lista) -> indica el valor mínimo de una lista.
+TODO -> (anotación)
