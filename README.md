@@ -1,3 +1,3 @@
 # programming
 
-PSelnt - programación con mapa conceptual
+PSelnt - programación con mapa conceptual (pseudo-código)
