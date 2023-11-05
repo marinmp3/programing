@@ -7,64 +7,66 @@
 #1 [2,5p] .- La comprobación de la longitud de la palabra deberá realizarse en una función a la que se le pase 
 #como atributo la palabra y que devuelva su longitud. [NO usar len()]
 
-def solicitarPalabra():
-    palabra = input("Introduce una palabra: ")
-    return palabra
+# #2 [2,5p] .- Se dejarán de pedir palabras cuando se introduzca la palabra FIN. (también puedo usar "While:True,sin embargo no me interesa usar break")
 
-def comprobarLong():
-    numLetras = 0
-    for letras in palabraIntroducida:
-        numLetras +=1    
-    return numLetras
-
-palabraIntroducida = input("Introduce una palabra: ")    
-print(comprobarLong())
-			                                                                              
-# #2 [2,5p] .- Se dejarán de pedir palabras cuando se introduzca la palabra FIN.
-
-def ejercicio2():
-    print(solicitarPalabra())
-    while palabraIntroducida != "FIN":
-        return(input("Introduce otra palabra: "))
-    
-print (ejercicio2())
-
-# Ej.						
-# Introduce una palabra: Pato		
-# Introduce una palabra: FIN		
-
-
-				
 # #3 [2,5p] .- Si la palabra es mayor de cinco (5) letras, se almacenará la segunda (2) letra.
-print(solicitarPalabra())
-def ejercicio3():
-    for numLetras in palabraIntroducida:
-        while numLetras>5:
-            print(numLetras[2])
 
-print(
-    ejercicio3())
+def solicitarPalabraYGuardar():
+    listaLetras = []
+    palabra = input("Dime una palabra: ")
 
-# en este punto el código ya no se ejecuta, lo que dejo es lo que he intentado hacer.
+    while palabra != "FIN":
+        numLetras = 0
+        for letra in palabra:
+            numLetras += 1
+        print(numLetras)
+        
+        if numLetras > 5:
+            segundaLetra = palabra[1]
+            guardarLetra(segundaLetra,listaLetras)
 
-# Ej. 						
-# 	Introduce una palabra: Pato		
-# []
-# 	Introduce una palabra: Paloma	
-# [a]
-# 	Introduce una palabra: Perrete	
-# [ae]
+        palabra = input("Dime otra palabra (o escribe 'FIN' para salir): ")
+        mostrarFraseOculta(listaLetras)
 
-# El programa final tiene que tener el siguiente aspecto:
+def guardarLetra(letra,listaLetras):
+    listaLetras.append(letra)
+    print(letra)
 
-# Introduce una palabra: Pato
-# Introduce una palabra: Paloma
-# Introduce una palabra: Perrete
-# Introduce una palabra: FIN
+def mostrarFraseOculta(listaLetras):
+    frase_oculta = '| '.join(listaLetras)  # Unir las letras en una cadena
+    print(f"La frase oculta es: {frase_oculta}")
 
-# La frase oculta es: ae
-
-
+print (solicitarPalabraYGuardar())
 
 # #4 [2,5p] .- Dada la frase Es común que lo elegante, sea tan temeroso como eterna es cualquier vida, almacenada en una lista . Obtén la frase oculta.
+
+
+def solicitarPalabraYGuardar():
+    listaLetras = []
+    listaFrase = ["Es","común","que","lo","elegante","sea","tan","temeroso","como","eterna","es","cualquier","vida"]
+    
+    for palabra in listaFrase:
+        numLetras = 0
+        for letra in palabra:
+            numLetras += 1
+        print(numLetras)
+        
+        if numLetras >= 5:
+            segundaLetra = palabra[1]
+            guardarLetra(segundaLetra,listaLetras)
+
+        mostrarFraseOculta(listaLetras)
+
+def guardarLetra(letra,listaLetras):
+    listaLetras.append(letra)
+    print(letra)
+
+def mostrarFraseOculta(listaLetras):
+    frase_oculta = '|'.join(listaLetras)  # Unir las letras en una cadena
+    print(f"La frase oculta es: {frase_oculta}")
+
+print (solicitarPalabraYGuardar())
+
+
+
 
