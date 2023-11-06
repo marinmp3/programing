@@ -13,6 +13,8 @@
 
 def solicitarPalabraYGuardar():
     listaLetras = []
+    numMinimoLetrasPalabra = 5
+    posicionLetraBuscada = 1
     palabra = input("Dime una palabra: ")
 
     while palabra != "FIN":
@@ -21,8 +23,8 @@ def solicitarPalabraYGuardar():
             numLetras += 1
         print(numLetras)
         
-        if numLetras > 5:
-            segundaLetra = palabra[1]
+        if numLetras >= numMinimoLetrasPalabra:
+            segundaLetra = palabra[posicionLetraBuscada]
             guardarLetra(segundaLetra,listaLetras)
 
         palabra = input("Dime otra palabra (o escribe 'FIN' para salir): ")
