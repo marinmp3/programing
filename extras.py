@@ -35,6 +35,7 @@ for pos in len(strNum):
 # vuelta 6 -> 93065[7]899 == 3[4]
     print(f"vuelta {pos} -> Estamos en e número {strNum[pos]}")
     if strNum[pos] == strBuscamos[0]:
+        encontrado = True
         print(F"el número {strNum[pos]} es igual al rimer numero que buscamos {strBuscamos}")
             # strNum[pos+1] == strBuscamos[0+1]
             # strNum[pos+2] == strBuscamos[0+2]
@@ -43,7 +44,7 @@ for pos in len(strNum):
             (F"el número strNum[pos+posBuscando] es {strNum[pos+posBuscando]}")
             (F"el número strNum[pos+posBuscando] es {strBuscamos[pos+posBuscando]}")
             #strNum[pos+posBuscando] == strBuscamos[posBuscando]
-        encontrado = True
+        
 print(encontrado)
 
 strNum = "930657899"
