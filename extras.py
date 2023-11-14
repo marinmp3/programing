@@ -1,28 +1,3 @@
-# 26.-
-# Comprueba, sin utilizar funciones propias de listas/string/for, si un número de teléfono introducido tiene el prefijo de Granada o no.
-
-def ejSugerido():
-    listaTlfno = "958349870"
-    print(listaTlfno)
-    if listaTlfno[0]== "9" and listaTlfno[1] == "5" and listaTlfno [2] == "8" :
-        print("Es un número de teléfono de Granada")
-    else: 
-        return("No es un número de  Granada")
-print(ejSugerido())
-
-def ejSugeridoConInput():
-    tlfno = (input("Introduce un número de 9 cifras: "))
-    if tlfno[0]     == "9" and tlfno[1] == "5" and tlfno [2] == "8" :
-        print("Es un número de teléfono de Granada")
-    else: 
-        return("No es un número de  Granada")
-print(ejSugeridoConInput()) 
-
-# 27.-
-# Similar al 26 ->
-# Comprueba, sin utilizar funciones propias de listas, si un número o un texto introducido está contenido en otro número o texto propio del programa.
-# +++ Crear un función a la que le pases dos listas y te devuelva si una contiene a la otra o no.
-
 strNum = "930657899"
 strBuscamos = "3"
 
@@ -43,6 +18,9 @@ for pos in len(strNum):
             # strNum[pos+posBuscando] == strBuscamos[posBuscando]
             (F"el número strNum[pos+posBuscando] es {strNum[pos+posBuscando]}")
             (F"el número strNum[pos+posBuscando] es {strBuscamos[pos+posBuscando]}")
+            if (strNum[pos+posBuscando] != strBuscamos[posBuscando]):
+                encontrado=False
+            print(f"Encontrado = {encontrado}")
             #strNum[pos+posBuscando] == strBuscamos[posBuscando]
         
 print(encontrado)
