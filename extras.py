@@ -24,6 +24,3 @@ for pos in len(strNum):
             #strNum[pos+posBuscando] == strBuscamos[posBuscando]
         
 print(encontrado)
-
-strNum = "930657899"
-strBuscamos = "3"
