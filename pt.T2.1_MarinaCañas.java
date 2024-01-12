@@ -19,9 +19,13 @@ class pt.T2.1.MarinaCañas  {
 
         } else if (azulesIntro < azules or amarillasIntro < amarillas or rojasIntro < rojas or verdesIntro < verdes){
             System.out.println("Te faltan piezas...");
+        } else if (){
+
         } else {
             System.out.println("Parece que tienes todas las piezas :)");
         }
+        
+        
     //2
         azules = Integer.parseInt(args[0]);
 
@@ -31,7 +35,7 @@ class pt.T2.1.MarinaCañas  {
 
         verdes = Integer.parseInt(args[3]);
 
-        if (args.length == 1){
+        if (args.length <4){
             System.out.println("¿Cuántas piezas tienes?: ");
             System.out.println("Azules " + args[0]);
             System.out.println("Amarillas " + args[1]);
