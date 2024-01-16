@@ -6,7 +6,7 @@ public class Bucles{
         Scanner sc = new Scanner(System.in);
         String[] ListaColores = {"Rojo", "Rosa", "Verde", "Amarillo", "Marrón", "Negro"};
         boolean salir = false;
-        String palabra;
+        String palabra = "";
 
         // Inicializar la variable del for
         for (String color : ListaColores){
@@ -52,17 +52,40 @@ public class Bucles{
 
         System.out.println("-----------------------");
 
-        // Bucle while - se utilizan en booleanos
-        System.out.println("Bucle while");
-        while (!salir){
+        // Bucle for como while
+        
+        System.out.println("Bucle for como while");
+        // Cuidado con los huecos
+        for (palabra = ""; !palabra.equals("salir"); ){
             System.out.println("Escribe salir: ");
             palabra = sc.nextLine();
-            if (palabra.equals("salir")){
-                salir = true;
-            } else{
-                System.out.println("De aquí no sales.");
-            }
+        }
+        
+
+        // Bucle while - se utilizan en booleanos
+        System.out.println("Bucle while");
+
+        while (!palabra.equals("salir")){
+            System.out.println("Escribe salir: ");
+            palabra = sc.nextLine();
         }   
-    }
+
+        System.out.println("Bucle while refactorizado");
+        while (!palabra.equals("salir"))
+
+        System.out.println("-----------------------");
+
+        // Bucle doWhile
+        System.out.println("Bucle doWhile")
+        do {
+            System.out.println("Escribe salir: ");
+            palabra = sc.nextLine;
+
+        }while (!palabra.equals("salir"));
+
+        do{
+            System.out.println("Introduce un número entre 1 y 50: ");
+            numero = sc.nextInt;
+        } while (numero<1 || numero>50); 
 }
     
