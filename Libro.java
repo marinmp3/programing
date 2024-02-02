@@ -1,9 +1,15 @@
+import java.util.ArrayList;
 public class Libro {
 
+    // Atributos de instancia
     private String titulo;
     private String autor;
     private final int ISBN;
     private int numPaginas;
+    private int fechaPublicacion; //año -- date
+
+    //Atributos de clase
+    private static int numMaximoLetras = 5;
      
 
     /**
@@ -13,10 +19,13 @@ public class Libro {
      * @param ISBN El ISBN del libro.
      */
     public Libro(String titulo, int ISBN){
-        this.titulo = titulo;
+        this.setTitulo(titulo);
         this.autor = "";
         this.ISBN = ISBN;
         this.numPaginas = 0;
+        if (numPaginas >= 0) this.numPaginas = numPaginas; //1
+
+        this.fechaPublicacion;
     }
 
     /**
@@ -32,7 +41,16 @@ public class Libro {
         this.autor = autor;
         this.ISBN = ISBN;
         this.numPaginas = numPaginas;
-        if (numPaginas < 0) numPaginas = 0; //2
+        //Opción 1
+        this.numPaginas = 0;
+        setNumPaginas(numPaginas);
+        //* if (numPaginas > 0) this.numPaginas = numPaginas;
+        //OPcion 2
+        if (numPaginas <= 0) numPaginas = 0;
+        this.numPaginas = numPaginas;
+        //OPcion 3
+        if (numPaginas <= 0) numPaginas = 0;
+        this.numPaginas = numPaginas;
     }
 
     /**
@@ -79,18 +97,54 @@ public class Libro {
         return this.numPaginas;
     }
 
+    public int getfechaPublicacion(){
+        return this.fechaPublicacion;
+    }
+
     /**
      * Establecer el título del libro. 
      * @param titulo El nuevo título del libro.
      */
     public void setTitulo(String titulo){
         this.titulo = titulo;
+        if (titulo.length()> this.numMaximoLetras) this.titulo = titulo.substring(0, this.numMaximoLetras);
+    }
+
+    public void setFechaPublicacion(int fechaPublicacion);
+    this.fechaPublicacion = fechaPublicacion;
+
+    /**
+     * Split programado
+     * 
+     */
+    private static void splitProgramado(String palabra, char separador){
+        ArrayList<String> listaPalabras = new ArrayList<String>();
+        String frase;
+        String pal= "";
+        for (int i=0 ; i<frase.length() ; i++){
+            if (frase.charAt(i) != separador){
+                pal += frase.charAt(i);
+            } else {
+                listaPalabras.add(pal);
+                pal = "";
+            }
+
+        }
     }
     /**
      * Establecer el autor del libro. 
      * @param autor El nuevo autor del libro.
      */
     public void setAutor(String autor){
+        String[] tituloPorPalabras;
+        if (autor.length() > this.numMaximoLetras){
+            this.autor = "";
+            String autorPorPalabras = autor.split(" "); //coge el argumento para separar el string
+            for (int i = 0 ; i <autorPorPalabras.length() ; i++){
+                this.autor += autorPorPalabras[i].charAt(0);
+            }            
+        }
+    
         this.autor = autor;
     }
 
@@ -100,8 +154,9 @@ public class Libro {
      */
     public void setNumPaginas(int numPaginas){
         this.numPaginas = numPaginas;
-        if (numPaginas < 0) this.numPaginas =1; //1
+        //if (numPaginas < 0) this.numPaginas =1; //1
         if (this.numPaginas < 0) this.numPaginas = this.numPaginas; //3
+        if (numPaginas < 0) numPaginas = 0; //2
     }
 
     /**
@@ -109,7 +164,7 @@ public class Libro {
      * @return Una cadena que representa el objeto libro.
      */
     public String toString(){
-        return  "El libro " + Recortar(this.titulo) + ", de " + this.autor + 
+        return  "El libro " + this.titulo + ", de " + this.autor + 
                 ", con ISBN: " + this.ISBN + ". Tiene " + this.numPaginas + 
                 " páginas.";
     }
