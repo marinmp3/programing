@@ -1,16 +1,15 @@
-import java.util.ArrayList;
-public class Libro {
+ import java.util.ArrayList;
 
-    // Atributos de instancia
+public class Libro {
+    // Atributo de instancia.
     private String titulo;
     private String autor;
-    private final int ISBN;
+    private final String ISBN;
     private int numPaginas;
-    private int fechaPublicacion; //año -- date
-
-    //Atributos de clase
-    private static int numMaximoLetras = 5;
-     
+    private int fechaPublicacion; // año.
+    // Atributo de clase -> 
+    // Es propio de la clase y no de cada uno de los objetos que la componen.
+    private static int numMaximoLetras = 15;
 
     /**
      * Constructor con parámetros. 
@@ -18,16 +17,13 @@ public class Libro {
      * @param titulo El título del libro.
      * @param ISBN El ISBN del libro.
      */
-    public Libro(String titulo, int ISBN){
+    public Libro(String titulo, String ISBN){
         this.setTitulo(titulo);
         this.autor = "";
         this.ISBN = ISBN;
         this.numPaginas = 0;
-        if (numPaginas >= 0) this.numPaginas = numPaginas; //1
-
-        this.fechaPublicacion;
+        this.fechaPublicacion = 0;
     }
-
     /**
      * Constructor con parámetros. 
      * Crear un libro con un título, autor, ISBN y número de páginas especificados.
@@ -35,37 +31,25 @@ public class Libro {
      * @param autor El autor del libro.
      * @param ISBN El ISBN del libro.
      * @param numPaginas El número de páginas del libro.
+     * @param fechaPublicacion Fecha en la que se publicó el libro
      */
-    public Libro(String titulo, String autor, int ISBN, int numPaginas){
-        this.titulo = titulo;
-        this.autor = autor;
+    public Libro(String titulo, String autor, String ISBN, int numPaginas, int fechaPublicacion){
+        this.setTitulo(titulo);
+        this.setAutor(autor);
         this.ISBN = ISBN;
-        this.numPaginas = numPaginas;
-        //Opción 1
+        // Opción 1:
         this.numPaginas = 0;
-        setNumPaginas(numPaginas);
-        //* if (numPaginas > 0) this.numPaginas = numPaginas;
-        //OPcion 2
+        this.setNumPaginas(numPaginas); //if (numPaginas > 0) this.numPaginas = numPaginas;
+        /*
+        // Opción 2:
+        this.numPaginas = numPaginas;
+        if (numPaginas <= 0)  this.numPaginas = 0;
+        // Opción 3:
         if (numPaginas <= 0) numPaginas = 0;
         this.numPaginas = numPaginas;
-        //OPcion 3
-        if (numPaginas <= 0) numPaginas = 0;
-        this.numPaginas = numPaginas;
-    }
-
-    /**
-     * Constructor con parámetros. 
-     * Crear un libro con un título, autor e ISBN.
-     * @param titulo El título del libro.
-     * @param autor El autor del libro.
-     * @param ISBN El ISBN del libro.
-     */
-    public Libro(String titulo, String autor, int ISBN){
-        this.titulo = titulo;
-        this.autor = autor;
-        this.ISBN = ISBN;
-        this.numPaginas = 0;
-        if (numPaginas < 0) numPaginas = 0; //2
+        */
+       this.fechaPublicacion = fechaPublicacion;
+        
     }
 
     /**
@@ -86,7 +70,7 @@ public class Libro {
      * Obtener el ISBN actual del libro.
      * @return El ISBN del libro.
      */
-    public int getISBN(){
+    public String getISBN(){
         return this.ISBN;
     }
     /**
@@ -96,8 +80,7 @@ public class Libro {
     public int getNumPaginas(){
         return this.numPaginas;
     }
-
-    public int getfechaPublicacion(){
+    public int getFechaPublicacion(){
         return this.fechaPublicacion;
     }
 
@@ -107,56 +90,66 @@ public class Libro {
      */
     public void setTitulo(String titulo){
         this.titulo = titulo;
-        if (titulo.length()> this.numMaximoLetras) this.titulo = titulo.substring(0, this.numMaximoLetras);
+        if (titulo.length() > this.numMaximoLetras) this.titulo = titulo.substring(0,this.numMaximoLetras);
     }
 
-    public void setFechaPublicacion(int fechaPublicacion);
-    this.fechaPublicacion = fechaPublicacion;
+    /**
+     * Nuestro substring() - no necesita que se le pase un libro, sino un str
+     * por lo que es estático (es independiente de la clase Libro)
+     *  
+     */
+    private static String nuestroSubstring(String palabra, int inicio, int fin){
+        int longitud = palabra.length();
+        String subPalabra = "";
+        for (int i = inicio ; i < fin && i < longitud ; i++){ //se puede escribir más de una cond.
+            subPalabra+=palabra.charAt(i);
+        }
+        return subPalabra;
+    }
 
     /**
-     * Split programado
-     * 
+     * Nuestro SPLIT()
+     * @since 09/02/2024
      */
-    private static void splitProgramado(String palabra, char separador){
+    private static void nuestroSplit(String frase, char separador){
         ArrayList<String> listaPalabras = new ArrayList<String>();
-        String frase;
-        String pal= "";
-        for (int i=0 ; i<frase.length() ; i++){
+        String palabra = "";
+        for(int i = 0; i < frase.length() ; i++){
             if (frase.charAt(i) != separador){
-                pal += frase.charAt(i);
+                palabra += frase.charAt(i);
             } else {
-                listaPalabras.add(pal);
-                pal = "";
+                listaPalabras.add(palabra);
+                palabra = "";
             }
-
         }
+        if (!palabra.equals("")) listaPalabras.add(palabra);
+
+        System.out.println(listaPalabras);
     }
     /**
      * Establecer el autor del libro. 
      * @param autor El nuevo autor del libro.
      */
     public void setAutor(String autor){
-        String[] tituloPorPalabras;
+        this.autor = autor;
         if (autor.length() > this.numMaximoLetras){
             this.autor = "";
-            String autorPorPalabras = autor.split(" "); //coge el argumento para separar el string
-            for (int i = 0 ; i <autorPorPalabras.length() ; i++){
-                this.autor += autorPorPalabras[i].charAt(0);
-            }            
+            String[] autorPorPalabras = autor.split(" ");
+            for (int i = 0 ; i < autorPorPalabras.length ; i++){
+                this.autor += autorPorPalabras[i].charAt(0) + ".";
+            }
         }
-    
-        this.autor = autor;
     }
-
     /**
      * Establecer el número de páginas del libro. 
      * @param numPaginas El nuevo número de páginas del libro.
      */
     public void setNumPaginas(int numPaginas){
-        this.numPaginas = numPaginas;
-        //if (numPaginas < 0) this.numPaginas =1; //1
-        if (this.numPaginas < 0) this.numPaginas = this.numPaginas; //3
-        if (numPaginas < 0) numPaginas = 0; //2
+        if (numPaginas >= 0 ) this.numPaginas = numPaginas;
+    }
+    // Asumo que el dato es correcto.
+    public void setFechaPublicacion(int fechaPublicacion){
+        this.fechaPublicacion = fechaPublicacion;
     }
 
     /**
@@ -171,16 +164,28 @@ public class Libro {
     
 
     public static void main(String[] args){
-        Libro libro1 = new Libro("Las tempestalidas",123456789);
-        Libro libro2 = new Libro("Juego de tronos", "R.R.Martin", 987654321,568);
-        Libro libro3 = new Libro("Los Demonios", "F.Dostoyevski", 2575368);
-
+        // Prueba los dos constructores.
+        Libro libro1 = new Libro("Las tempestálidas","Georgi Gospodinov", "841761",2020,400);
+        Libro libro2 = new Libro("Como matar a tu familia","Bella Mackie","849129",2021,400);
+        Libro libro3 = new Libro("Oso","Marian Engel","841597",1976,168);
+ 
         System.out.println("libro1 -> " + libro1);
         System.out.println("libro2 -> " + libro2);
-        System.out.println("libro3 ->" + libro3);
+        System.out.println("libro3 -> " + libro3);
+        // Prueba setNumPaginas con un valor válido.
+        libro1.setNumPaginas(400);
+        System.out.println("libro1 -> " + libro1);
+        // Prueba setNumPaginas con un valor inválido.
+        libro1.setNumPaginas(-200);
+        System.out.println("libro1 -> " + libro1);
+        /*// Prueba setAutor con un nombre largo.
+        libro1.setAutor("Gabriel García Marquez");
+        System.out.println("libro1 -> " + libro1);*/
+
+        nuestroSplit("la casa verde",' ');
+        System.out.println(nuestroSubstring("la casa verde", 1, 20));
     }
 }
-
 
 /**
  * El número de páginas introducidas no puede ser menor que 0. 
@@ -189,4 +194,7 @@ public class Libro {
  * 
  * Tanto el título como el autor no pueden tener más de 20 carácteres.
  * En caso de que tengan más, el título se trunca y en el autor se ponen las iniciales.
+ * 
+ * La fecha de publicación no puede ser posterior al año actual.
+ * Hacer el constructor de copia.
  */
